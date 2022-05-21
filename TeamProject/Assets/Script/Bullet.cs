@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
         }
         else  Destroy(gameObject);
     }
-    private void OnBecameInvisible() // ī�޶� ������������ Destory
+    private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }

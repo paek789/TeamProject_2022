@@ -207,7 +207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 69db29dd0e1319e458e0e4f18125ab66, type: 2}
+  - {fileID: 2100000, guid: ad030d4f77f6f7b4887be5b3388c71c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1718,6 +1718,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400503552}
   m_CullTransparentMesh: 1
+
 --- !u!1 &1406742341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,6 +1732,7 @@ GameObject:
   - component: {fileID: 1406742343}
   - component: {fileID: 1406742342}
   - component: {fileID: 1406742346}
+
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -1830,6 +1832,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+
 --- !u!1 &1531742276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,6 +2006,7 @@ MonoBehaviour:
 --- !u!95 &1660964713
 Animator:
   serializedVersion: 3
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2113,6 +2117,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.1207619, y: 3.22, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+
 --- !u!1 &1672247026
 GameObject:
   m_ObjectHideFlags: 0

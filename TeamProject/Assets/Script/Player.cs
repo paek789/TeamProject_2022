@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; // ���콺 Ŀ�� �����
+
+        Cursor.lockState = CursorLockMode.Locked; // 마우스 커서 숨기기
         Cursor.visible = false;
     }
 
@@ -29,7 +30,8 @@ public class Player : MonoBehaviour
         MouseRotation();
         KeyboardInput();
     }
-    void KeyboardInput() // ������Է�
+
+    void KeyboardInput() // 사용자입력
     {
         if (Input.GetKey(KeyCode.A))
         {
@@ -54,12 +56,14 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.E))
         {
-            // ����ȯ �� ��������ȯ ���� �� �ӽ� ����ȯ 
+            // 씬전환 시 데이터전환 설계 전 임시 씬전환 
+
             SceneManager.LoadScene("2DMain");
         }
     }
 
-    void MouseRotation() // ���콺 �̵��� ���� ī�޶� rotate
+    void MouseRotation() // 마우스 이동에 따른 카메라 rotate
+
     {
 
         float yRotation = Input.GetAxisRaw("Mouse X");
@@ -76,12 +80,13 @@ public class Player : MonoBehaviour
         camera_Main.transform.localEulerAngles = new Vector3(currentCameraRotationX, -currentCameraRotationY, 0f);
         transform.localEulerAngles = camera_Main.transform.localEulerAngles;
     }
-    private void OnTriggerStay(Collider other) // ������ �浹
+
+    private void OnTriggerStay(Collider other) // 오락기 충돌
     {        
-        if(other.tag == "Stage1" || other.tag == "Stage2" || other.tag == "Stage3") // ������ �浹�� �ؽ�Ʈ ����
+        if(other.tag == "Stage1" || other.tag == "Stage2" || other.tag == "Stage3") // 오락기 충돌시 텍스트 제어
         {
             EnterText.gameObject.SetActive(true);
-            EnterText.text = "E������ ���� (" + other.tag + ")"; 
+            EnterText.text = "E를눌러 진입 (" + other.tag + ")"; 
         }
     }
     private void OnTriggerExit(Collider other)
