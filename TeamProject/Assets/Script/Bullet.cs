@@ -17,9 +17,14 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.tag == "Monster"){
+            other.gameObject.SetActive (false);
+        }
+        if (other.gameObject.tag == "Player") {
+        }
+        else  Destroy(gameObject);
     }
-    private void OnBecameInvisible() // 카메라에 보이지않으면 Destory
+    private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }

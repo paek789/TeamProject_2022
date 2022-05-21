@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; // ¸¶¿ì½º Ä¿¼­ ¼û±â±â
+
+        Cursor.lockState = CursorLockMode.Locked; // ë§ˆìš°ìŠ¤ ì»¤ì„œ ìˆ¨ê¸°ê¸°
         Cursor.visible = false;
     }
 
@@ -29,7 +30,8 @@ public class Player : MonoBehaviour
         MouseRotation();
         KeyboardInput();
     }
-    void KeyboardInput() // »ç¿ëÀÚÀÔ·Â
+
+    void KeyboardInput() // ì‚¬ìš©ìì…ë ¥
     {
         if (Input.GetKey(KeyCode.A))
         {
@@ -54,12 +56,14 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.E))
         {
-            // ¾ÀÀüÈ¯ ½Ã µ¥ÀÌÅÍÀüÈ¯ ¼³°è Àü ÀÓ½Ã ¾ÀÀüÈ¯ 
+            // ì”¬ì „í™˜ ì‹œ ë°ì´í„°ì „í™˜ ì„¤ê³„ ì „ ì„ì‹œ ì”¬ì „í™˜ 
+
             SceneManager.LoadScene("2DMain");
         }
     }
 
-    void MouseRotation() // ¸¶¿ì½º ÀÌµ¿¿¡ µû¸¥ Ä«¸Ş¶ó rotate
+    void MouseRotation() // ë§ˆìš°ìŠ¤ ì´ë™ì— ë”°ë¥¸ ì¹´ë©”ë¼ rotate
+
     {
 
         float yRotation = Input.GetAxisRaw("Mouse X");
@@ -76,12 +80,13 @@ public class Player : MonoBehaviour
         camera_Main.transform.localEulerAngles = new Vector3(currentCameraRotationX, -currentCameraRotationY, 0f);
         transform.localEulerAngles = camera_Main.transform.localEulerAngles;
     }
-    private void OnTriggerStay(Collider other) // ¿À¶ô±â Ãæµ¹
+
+    private void OnTriggerStay(Collider other) // ì˜¤ë½ê¸° ì¶©ëŒ
     {        
-        if(other.tag == "Stage1" || other.tag == "Stage2" || other.tag == "Stage3") // ¿À¶ô±â Ãæµ¹½Ã ÅØ½ºÆ® Á¦¾î
+        if(other.tag == "Stage1" || other.tag == "Stage2" || other.tag == "Stage3") // ì˜¤ë½ê¸° ì¶©ëŒì‹œ í…ìŠ¤íŠ¸ ì œì–´
         {
             EnterText.gameObject.SetActive(true);
-            EnterText.text = "E¸¦´­·¯ ÁøÀÔ (" + other.tag + ")"; 
+            EnterText.text = "Eë¥¼ëˆŒëŸ¬ ì§„ì… (" + other.tag + ")"; 
         }
     }
     private void OnTriggerExit(Collider other)
