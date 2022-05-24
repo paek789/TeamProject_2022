@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_2D : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Player_2D : MonoBehaviour
     Rigidbody rigid;
     [SerializeField]
     GameObject bullet;
+    public int pLife;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,15 @@ public class Player_2D : MonoBehaviour
         if(collision.gameObject.tag == "Monster"){
             OnDamaged(collision.transform.position);  
         }
+       
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Clear")
+        {
+            SceneManager.LoadScene("Clear");
+        }
     }
 
 
@@ -50,6 +60,7 @@ public class Player_2D : MonoBehaviour
         int dirc = transform.position.x-tartgetPos.x > 0 ? 1 : -1; 
         rigid.AddForce(new Vector3(dirc,1)*7, ForceMode.Impulse);
         Invoke("OffDamaged",2);
+        pLife -= 1;
     }
 
     void OffDamaged(){ 

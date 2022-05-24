@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class GameManager : MonoBehaviour
     public int bCoin;
     public int cCoin;
     public int dCoin;
-    public int life;
+    private int Life;
+    public GameObject p;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
         bCoin = 0;
         cCoin = 0;
         dCoin = 0;
-        life = 3;
+        Life = p.GetComponent<Player_2D>().pLife;
     }
     /*public static GameManager getGameManager() {
         if (mgr == null){
@@ -30,8 +32,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Life = p.GetComponent<Player_2D>().pLife;
+        if(Life <= 0)
+        {
+            GameOver();
+        }
     }
 
+    void GameOver()
+    {
+        
+            SceneManager.LoadScene("GameOver");
+        
+    }
 
 }

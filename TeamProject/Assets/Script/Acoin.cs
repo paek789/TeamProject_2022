@@ -20,7 +20,7 @@ public class Acoin : MonoBehaviour
     }
     void OnTriggerEnter(Collider other){
         mgr.aCoin++;
-        mgr.aCoinText.text = "aCoin : " + mgr.aCoin;
+        mgr.aCoinText.text = "Coin : " + mgr.aCoin;
         Destroy(gameObject);
     } 
 }
