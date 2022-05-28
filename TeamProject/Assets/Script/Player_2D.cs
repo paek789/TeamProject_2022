@@ -35,7 +35,7 @@ public class Player_2D : MonoBehaviour
             Instantiate(bullet,new Vector3(transform.position.x+0.5f,transform.position.y,transform.position.z) , Quaternion.identity);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnCollisionEnter(Collision collision) {
         
         if(collision.gameObject.tag == "Monster"){
             OnDamaged(collision.transform.position);  
