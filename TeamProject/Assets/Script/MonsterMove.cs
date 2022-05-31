@@ -11,8 +11,7 @@ public class MonsterMove : MonoBehaviour
     // Start is called before the first frame update
     private void Awake() {
         rigid = GetComponent<Rigidbody>();
-        Invoke("Think", 5); // 초기화 함수 안에 넣어서 실행될 때 마다(최초 1회) nextMove변수가 초기화 되도록함 
-        
+        Invoke("Think", 5); // 초기화 함수 안에 넣어서 실행될 때 마다(최초 1회) nextMove변수가 초기화 되도록함         
     }
 
 

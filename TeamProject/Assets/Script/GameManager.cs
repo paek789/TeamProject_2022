@@ -6,44 +6,43 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //private static GameManager mgr;
-    public Text aCoinText;
-    public int aCoin;
-    public int bCoin;
-    public int cCoin;
-    public int dCoin;
-    private int Life;
-    public GameObject p;
-    // Start is called before the first frame update
+    public static GameManager gameManager;
+    public int coin = 0;
+    public int currentStage = 0; // 0 = 3D ��������, 1~ = 2D �������� �ܰ�
     void Start()
     {
-        aCoin = 0;
-        bCoin = 0;
-        cCoin = 0;
-        dCoin = 0;
-        Life = p.GetComponent<Player_2D>().pLife;
+        if (gameManager == null) gameManager = this;
+        else Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
-    /*public static GameManager getGameManager() {
-        if (mgr == null){
-            mgr = new GameManager();
-        }
-    }*/
-
-    // Update is called once per frame
-    void Update()
+    void SetStageText()
     {
-        Life = p.GetComponent<Player_2D>().pLife;
-        if(Life <= 0)
+        if (currentStage != 0)
         {
-            GameOver();
+            GameObject.Find("Text_Stage").GetComponent<Text>().text = "Stage " + currentStage;
         }
     }
-
+    void StageClear()
+    {
+        MenuControl_2D(1);
+    }
     void GameOver()
     {
-        
-            SceneManager.LoadScene("GameOver");
-        
+        MenuControl_2D(2);
     }
-
+    void MenuControl_2D(int control)
+    {
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        GameObject.Find("Canvas").transform.Find("MenuPanel").gameObject.SetActive(true);
+        if(control==1) GameObject.Find("MenuPanel").transform.Find("StageClear").gameObject.SetActive(true);
+        else if(control==2) GameObject.Find("MenuPanel").transform.Find("GameOver").gameObject.SetActive(true);
+        GameObject.Find("Button_BackTo3d").GetComponent<Button>().onClick.AddListener(BackTo3D);
+    }
+    void BackTo3D()
+    {        
+        SceneManager.LoadScene("3DMain");
+        Time.timeScale = 1;
+    }
 }

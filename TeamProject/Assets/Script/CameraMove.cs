@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
+    }
     void Update()
     {
-        transform.position += new Vector3(1f * Time.deltaTime, 0, 0);
+        transform.position = new Vector3(GameObject.Find("Player").GetComponent<Transform>().position.x + 7.5f, transform.position.y, transform.position.z);
+    }
+    void CameraShake()
+    {
+
     }
 }
