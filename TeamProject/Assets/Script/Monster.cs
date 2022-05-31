@@ -42,7 +42,7 @@ public class Monster : MonoBehaviour
         Material material = GetComponent<SpriteRenderer>().material;
         material.color = Color.red;
         transform.position = new Vector3(transform.position.x + 0.05f, transform.position.y, transform.position.z);
-        /* ¸ó½ºÅÍ ÇÇ°Ý½Ã Áøµ¿
+        /* ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°Ý½ï¿½ ï¿½ï¿½
         var oldPosition = transform.position; 
         int x = 10;
         while (x > 0)

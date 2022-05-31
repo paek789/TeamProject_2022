@@ -14,7 +14,7 @@ public class Player_2D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GameManager.gameManager.SetStageText(); public À¸·Î ¼±¾ðµÈ ÇÔ¼ö¿¡¸¸ »ç¿ë°¡´É
+        //GameManager.gameManager.SetStageText(); public ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ ï¿½ï¿½ë°¡ï¿½ï¿½
         GameManager.gameManager.SendMessage("SetStageText");
         GameObject.Find("Text_Coin").GetComponent<Text>().text = "" + GameManager.gameManager.coin;
     }
