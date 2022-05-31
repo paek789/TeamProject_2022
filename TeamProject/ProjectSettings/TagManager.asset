@@ -8,6 +8,11 @@ TagManager:
   - Stage1
   - Stage2
   - Stage3
+  - Monster
+  - Clear
+  - Bullet
+  - FootHold
+  - Coin
   layers:
   - Default
   - TransparentFX
