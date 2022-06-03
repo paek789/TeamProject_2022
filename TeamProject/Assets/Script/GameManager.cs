@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
     public int coin = 0;
-    public int currentStage = 0; // 0 = 3D ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 1~ = 2D ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü°ï¿½
+    public int currentStage = 0; // 0 = 3D ½ºÅ×ÀÌÁö, 1~ = 2D ½ºÅ×ÀÌÁö ´Ü°è
     void Start()
     {
         if (gameManager == null) gameManager = this;
