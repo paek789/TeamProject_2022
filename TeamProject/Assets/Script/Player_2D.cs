@@ -12,6 +12,7 @@ public class Player_2D : MonoBehaviour
     int hp =5;
     bool isInvincible = false;
     bool onFootHold;
+    public float unBeatTime = 10; //무적시간
     // Start is called before the first frame update
     void Start()
     {
@@ -40,9 +41,12 @@ public class Player_2D : MonoBehaviour
     {    
         if(other.tag == "Monster" && !isInvincible)
         {
+                   
             hp--;
             if (hp == 0) GameManager.gameManager.SendMessage("GameOver");
+            
             StartCoroutine("OnDamage", other.transform.position);
+            
         }
         if (other.tag == "Coin")
         {
@@ -74,14 +78,19 @@ public class Player_2D : MonoBehaviour
         GameObject.Find("Canvas").transform.Find("DamagedPanel").gameObject.SetActive(true);
 
         if (transform.position.x >= monsterPosition.x) GetComponent<Rigidbody>().AddForce(new Vector3(1f, 0.1f, 0) * 7, ForceMode.Impulse);
-        else GetComponent<Rigidbody>().AddForce(new Vector3(-1f, 0.1f, 0) * 7, ForceMode.Impulse);
+        else GetComponent<Rigidbody>().AddForce(new Vector3(-0.3f, 0.1f, 0) * 7, ForceMode.Impulse);
 
         yield return new WaitForSeconds(0.1f);
 
-        isInvincible = false;
+        
         GetComponent<SpriteRenderer>().material.color = Color.white;
         GameObject.Find("Canvas").transform.Find("DamagedPanel").gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+        isInvincible = false;
     }
+   
+
 
     /*
     void OnDamaged(Vector3 tartgetPos)
