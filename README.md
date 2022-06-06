@@ -1,7 +1,7 @@
 # TeamProject_2022
 2022 유니티 팀프로젝트
-ddddd
-aaaaa
-dfdfdf
-
-fox read dumble read book
+1. 맵 디자인
+2. 3d 쪽 모델링
+3. 애니메이팅
+4. 탄막 조건 조정
+5. 상인 아이템 판매 / 퀘스트
