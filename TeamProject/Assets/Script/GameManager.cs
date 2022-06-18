@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    GameObject map;
     public static GameManager gameManager;
-    public int coin = 0;
-    public int currentStage = 0; // 0 = 3D ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 1~ = 2D ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü°ï¿½
+    public int coin;
+    public int bullet;
+    public int currentStage = 0; // 0 = 3D ½ºÅ×ÀÌÁö, 1~ = 2D ½ºÅ×ÀÌÁö ´Ü°è
     void Start()
     {
         if (gameManager == null) gameManager = this;
@@ -24,10 +26,12 @@ public class GameManager : MonoBehaviour
     }
     void StageClear()
     {
+        LoadMap(false);
         MenuControl_2D(1);
     }
     void GameOver()
     {
+        LoadMap(false);
         MenuControl_2D(2);
     }
     void MenuControl_2D(int control)
@@ -44,5 +48,23 @@ public class GameManager : MonoBehaviour
     {        
         SceneManager.LoadScene("3DMain");
         Time.timeScale = 1;
+    }
+    public void LoadMap(bool setActive)
+    {
+        if(currentStage == 1)
+        {
+            GameObject.Find("Map").transform.Find("Map1").gameObject.SetActive(setActive);
+            GameObject.Find("Player").GetComponent<Player_2D>().SendMessage("rigidGravity", true);
+        }
+        else if(currentStage == 2)
+        {
+            GameObject.Find("Map").transform.Find("Map2").gameObject.SetActive(setActive);
+            GameObject.Find("Player").GetComponent<Player_2D>().SendMessage("rigidGravity", true);
+        }
+        else if(currentStage == 3)
+        {
+            GameObject.Find("Map").transform.Find("Map3").gameObject.SetActive(setActive);
+            GameObject.Find("Player").GetComponent<Player_2D>().SendMessage("rigidGravity", false);
+        }
     }
 }

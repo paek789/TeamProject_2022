@@ -23,6 +23,7 @@ public class Monster : MonoBehaviour
 
         if (currentHp <= 0)
         {
+            DropCoin();
             Destroy(hpBar);
             Destroy(gameObject);
         }        
@@ -41,8 +42,8 @@ public class Monster : MonoBehaviour
     {  
         Material material = GetComponent<SpriteRenderer>().material;
         material.color = Color.red;
-        transform.position = new Vector3(transform.position.x + 0.05f, transform.position.y, transform.position.z);
-        /* ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°Ý½ï¿½ ï¿½ï¿½
+        // transform.position = new Vector3(transform.position.x + 0.05f, transform.position.y, transform.position.z);
+        /* ¸ó½ºÅÍ ÇÇ°Ý½Ã Áøµ¿
         var oldPosition = transform.position; 
         int x = 10;
         while (x > 0)
@@ -69,5 +70,10 @@ public class Monster : MonoBehaviour
     {
         var hpBarPosition = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y - GetComponent<Collider>().bounds.size.y / 2, transform.position.z));
         hpBar.transform.position = hpBarPosition;
+    }
+    void DropCoin()
+    {
+        var bigCoin = Resources.Load("BigCoin") as GameObject;
+        var a = Instantiate(bigCoin, new Vector3(transform.position.x,transform.position.y-0.1f,transform.position.z), Quaternion.identity);
     }
 }
