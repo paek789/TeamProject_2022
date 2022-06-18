@@ -25,13 +25,18 @@ public class Player_2D : MonoBehaviour
     {
         transform.position += new Vector3(2.5f * Time.deltaTime, 0, 0);
         KeyboardInput();
+        
     }
+
+    
     void KeyboardInput()
     {
         if (Input.GetKeyDown(KeyCode.Space) && onFootHold)
         {
             GetComponent<Rigidbody>().AddForce(Vector3.up* 10, ForceMode.Impulse);
+            
         }
+      
         if (Input.GetKeyDown(KeyCode.A))
         {
             Instantiate(bullet, GameObject.Find("BulletStart").GetComponent<Transform>().position, Quaternion.identity);
@@ -57,6 +62,7 @@ public class Player_2D : MonoBehaviour
         if (other.tag == "FootHold")
         {
             onFootHold = true;
+            
         }
         if (other.tag == "Clear")
         {
@@ -89,7 +95,7 @@ public class Player_2D : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         isInvincible = false;
     }
-   
+  
 
 
     /*

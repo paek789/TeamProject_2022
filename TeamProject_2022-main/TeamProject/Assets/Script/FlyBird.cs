@@ -7,11 +7,11 @@ public class FlyBird : MonoBehaviour
  
         float upMax = 3.0f; //위로 이동가능한 (y)최대값
 
-        float downMax = -1.0f; //아래로 이동가능한 (ㅛ)최대값
+        float downMax = -1.0f; //아래로 이동가능한 (y)최대값
 
         float currentPosition; //현재 위치(y) 저장
 
-        float direction = 5.0f; //이동속도+방향
+        float direction = 4.0f; //이동속도+방향
 
 
 
