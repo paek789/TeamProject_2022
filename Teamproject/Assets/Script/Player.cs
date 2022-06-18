@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     float mouseSensitivity;
     float currentCameraRotationX = 0;
     float currentCameraRotationY = 0;
+    float height;
     [SerializeField]
     float speed;
     [SerializeField]
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked; // 마우스 커서 숨기기
         Cursor.visible = false;
+        height = 8.5f;
     }
     // Update is called once per frame
     void Update()
@@ -34,29 +36,39 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(-speed * Time.deltaTime, 0, 0);
-            transform.position = new Vector3(transform.position.x, 8.3f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, height, transform.position.z);
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(speed * Time.deltaTime, 0, 0);
-            transform.position = new Vector3(transform.position.x, 8.3f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, height, transform.position.z);
         }
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(0, 0, speed * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, 8.3f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, height, transform.position.z);
 
         }
         if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(0, 0, -speed * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, 8.3f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, height, transform.position.z);
         }
         if (Input.GetKey(KeyCode.E) && selectedStage != 0)
         {
             // 씬전환 시 데이터전환 설계 전 임시 씬전환 
-            GameManager.gameManager.currentStage = selectedStage;
-            SceneManager.LoadScene("2DMain");
+            if(selectedStage < 4)
+            {
+                GameManager.gameManager.currentStage = selectedStage;
+                SceneManager.LoadScene("2DMain");
+            }
+            else if(selectedStage == 4)
+            {                
+                GameObject.Find("Canvas").transform.Find("NPC_SHOP").gameObject.SetActive(true);
+                GameObject.Find("NPC").GetComponent<NPC>().SendMessage("shopUpdate");
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
     }
     void MouseRotation() // 마우스 이동에 따른 카메라 rotate
@@ -85,10 +97,16 @@ public class Player : MonoBehaviour
             else if (other.tag == "Stage2") selectedStage = 2;
             else if (other.tag == "Stage3") selectedStage = 3;
         }
+        if(other.tag == "NPC")
+        {
+            EnterText.gameObject.SetActive(true);
+            EnterText.text = "E를 눌러 NPC와 대화하기";
+            selectedStage = 4;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Stage1" || other.tag == "Stage2" || other.tag == "Stage3")
+        if (other.tag == "Stage1" || other.tag == "Stage2" || other.tag == "Stage3" || other.tag == "NPC")
         {
             EnterText.gameObject.SetActive(false);
             selectedStage = 0;
