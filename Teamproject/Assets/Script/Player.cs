@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked; // 마우스 커서 숨기기
         Cursor.visible = false;
-        height = 8.5f;
+        height = 9f;
     }
     // Update is called once per frame
     void Update()

@@ -44,21 +44,21 @@ public class Player_2D : MonoBehaviour
         }
         if (GameManager.gameManager.currentStage == 3)
         {
-            if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x >3.5f)
+            if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > 3.5f)
             {
-                transform.Translate(new Vector3(-0.01f, 0, 0));
+                transform.Translate(new Vector3(-4f * Time.deltaTime, 0, 0));
             }
             if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < 13f)
             {
-                transform.Translate(new Vector3(0.01f, 0, 0));
+                transform.Translate(new Vector3(4f * Time.deltaTime, 0, 0));
             }
-            if (Input.GetKey(KeyCode.UpArrow) && transform.position.y<7.5f)
+            if (Input.GetKey(KeyCode.UpArrow) && transform.position.y < 7.5f)
             {
-                transform.Translate(new Vector3(0, 0.01f, 0));
+                transform.Translate(new Vector3(0, 4f * Time.deltaTime, 0));
             }
             if (Input.GetKey(KeyCode.DownArrow) && transform.position.y > 0)
             {
-                transform.Translate(new Vector3(0, -0.01f, 0));
+                transform.Translate(new Vector3(0, -4f * Time.deltaTime, 0));
             }
         }
     }
